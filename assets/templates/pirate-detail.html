@@ -1,0 +1,103 @@
+         <link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+
+
+<div ng-hide="$ctrl.editorEnabled">
+ 
+<div class="container-fluid">
+     <div class="panel panel-primary">
+   
+        <div class="panel-heading" class="text-center">
+            <h2 class="panel-title">Pirate Detail View</h2>
+        </div>
+ </div>
+
+   <dl class="dl-horizontal">
+        <dt>Name</dt>
+
+        <dd>{{ $ctrl.pirate.name }}</dd>
+        <dt>Vessel</dt>
+        <dd>{{ $ctrl.pirate.vessel }}</dd>
+        <dt>Weapon</dt>
+        <dd>{{ $ctrl.pirate.weapon }}</dd>
+        <dt>ID</dt>
+        <dd>{{ $ctrl.pirate._id }}</dd>
+    </dl>
+            </div>
+    <button ng-click="$ctrl.enableEditor($ctrl.pirate)">Edit</button>
+     <button  type="submit" ng-click="$ctrl.back()">Cancel</button>
+      
+    </div>
+</div>
+
+
+<!--//modify this for homework to apply bootsrap styles-->
+
+<div ng-show="$ctrl.editorEnabled">
+
+<div class="container-fluid">
+<div class="panel panel-primary">
+   
+        <div class="panel-heading" class="text-center">
+            <h2 class="panel-title">Pirate Detail Edit</h2>
+        </div>
+ </div>
+    <form name="updatePirate" ng-submit="$ctrl.savePirate($ctrl.pirate, $ctrl.pirate._id)" name="updatePirate" class="form-inline">
+  
+  
+   <div class="form-group" ng-class="{ 'has-error': updatePirate.pname.$touched && updatePirate.pname.$invalid }">
+            <!--<label class="control-label" for="pirate-name">Name</label>
+            <input type="text" name="pname" ng-model="pirate.name" class="form-control" id="pirate-name" placeholder="Name" ng-required="true">
+            <p class="text-warning" ng-show="addform.pname.$invalid && addform.pname.$touched">You must enter a name.</p>-->
+  
+        <label class="label_edit_title" for="pirate-name" 
+      >Name</label>
+
+        <input class = "input_text" id="pirate-name"
+         ng-model="$ctrl.pirate.name" 
+         name="pname" placeholder="Name" ng-required="true">
+
+     <p class="text-warning" ng-show="updatePirate.pname.$invalid && updatePirate.pname.$touched">You must enter a name.</p>
+</div>
+
+<div class="form-group">
+      <label class="label_edit_title">Vessel</label>
+        <input class = "input_text" ng-model="$ctrl.pirate.vessel" id="pirate-vessel" name="pvessel"
+         placeholder="Vessel"
+          ng-required="true">
+        <p class="text-warning" ng-show="updatePirate.pvessel.$invalid && updatePirate.pvessel.$touched">You must enter a vessel.</p>
+
+</div>
+
+<div class="form-group">
+     <label class="label_edit_title">Weapon</label>
+        <input class = "input_text" ng-model="$ctrl.pirate.weapon" id="pirate-weapon" name="pweapon"
+         placeholder="Weapon"
+          ng-required="true">
+
+             <p class="text-warning" ng-show="updatePirate.pweapon.$invalid && updatePirate.pweapon.$touched">You must enter a weapon.</p>
+
+</div>
+
+<div class="form-group">
+        <label class="label_edit_title">ID</label>
+        <input class = "input_text" ng-model="$ctrl.pirate._id" disabled>
+</div>
+  
+
+        <input type="submit"class="btn btn-default"  value="Save">
+  <button class="btn btn-default" type="submit" ng-click="$ctrl.cancel()">Cancel</button>
+  <button class="btn btn-default" type="submit" ng-click="$ctrl.back()">Back</button>
+    </form>
+   
+</div>
+
+
+
+
+</div>
